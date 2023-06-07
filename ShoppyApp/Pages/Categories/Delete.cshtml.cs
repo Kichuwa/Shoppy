@@ -5,18 +5,20 @@ using ShoppyApp.Model;
 
 namespace ShoppyApp.Pages.Categories
 {
-    public class CreateModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly ApplicationDBContext _db;
         [BindProperty]
         public Category Category { get; set; }
 
-        public CreateModel(ApplicationDBContext db)
+        public DeleteModel(ApplicationDBContext db)
         {
             _db = db;
         }
-        public void OnGet()
+        //Find primary key in DB and return item.
+        public void OnGet(int id)
         {
+            Category = _db.Category.Find(id);
         }
 
         public async Task<IActionResult> OnPost()
@@ -29,7 +31,7 @@ namespace ShoppyApp.Pages.Categories
             }
             if (ModelState.IsValid)
             {
-                await _db.Category.AddAsync(Category);
+                _db.Category.Update(Category);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Index");
             }
