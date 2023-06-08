@@ -33,10 +33,12 @@ namespace ShoppyApp.Pages.Categories
             {
                 _db.Category.Update(Category);
                 await _db.SaveChangesAsync();
+                TempData["success"] = "Category updated successfully!";
                 return RedirectToPage("Index");
             }
-                //Keep user on Page if invalid state
-                return Page();
+            TempData["error"] = "Error updating data";
+            //Keep user on Page if invalid state
+            return Page();
         }
     }
 }
