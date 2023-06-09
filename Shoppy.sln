@@ -5,11 +5,11 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppyApp", "ShoppyApp\ShoppyApp.csproj", "{DC24401C-2ACC-40B5-9823-DEE0683F32FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shoppy.DataAccess", "Shoppy.DataAccess\Shoppy.DataAccess.csproj", "{A675C8E6-5782-4972-AFDC-CD4205A6141F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shoppy.DataAccess", "Shoppy.DataAccess\Shoppy.DataAccess.csproj", "{A675C8E6-5782-4972-AFDC-CD4205A6141F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shoppy.Models", "Shoppy.Models\Shoppy.Models.csproj", "{9EDAADAB-FECB-481D-BC98-18B9DF830D71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shoppy.Models", "Shoppy.Models\Shoppy.Models.csproj", "{9EDAADAB-FECB-481D-BC98-18B9DF830D71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shoppy.Utility", "Shoppy.Utility\Shoppy.Utility.csproj", "{A835610B-63FE-49C7-A6C8-9649BEAD6565}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shoppy.Utility", "Shoppy.Utility\Shoppy.Utility.csproj", "{A835610B-63FE-49C7-A6C8-9649BEAD6565}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shoppy.DataAccess.Data;
 using Shoppy.Models;
 
-namespace ShoppyApp.Pages.Categories
+namespace ShoppyApp.Pages.Admin.Categories
 {
     public class EditModel : PageModel
     {
