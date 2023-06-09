@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShoppyApp.Data;
-using ShoppyApp.Model;
+using Shoppy.DataAccess.Data;
+using Shoppy.Models;
 
 namespace ShoppyApp.Pages.Categories
 {

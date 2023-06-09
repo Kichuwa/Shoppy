@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ShoppyApp.Data;
-using ShoppyApp.Model;
+using Shoppy.DataAccess.Data;
+using Shoppy.Models;
 
 namespace ShoppyApp.Pages.CategoryTemp
 {
     public class DeleteModel : PageModel
     {
-        private readonly ShoppyApp.Data.ApplicationDBContext _context;
+        private readonly ApplicationDBContext _context;
 
-        public DeleteModel(ShoppyApp.Data.ApplicationDBContext context)
+        public DeleteModel(ApplicationDBContext context)
         {
             _context = context;
         }

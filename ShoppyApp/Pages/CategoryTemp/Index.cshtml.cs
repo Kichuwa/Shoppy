@@ -5,16 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ShoppyApp.Data;
-using ShoppyApp.Model;
+using Shoppy.DataAccess;
+using Shoppy.DataAccess.Data;
+using Shoppy.Models;
 
 namespace ShoppyApp.Pages.CategoryTemp
 {
     public class IndexModel : PageModel
     {
-        private readonly ShoppyApp.Data.ApplicationDBContext _context;
+        private readonly ApplicationDBContext _context;
 
-        public IndexModel(ShoppyApp.Data.ApplicationDBContext context)
+        public IndexModel(ApplicationDBContext context)
         {
             _context = context;
         }

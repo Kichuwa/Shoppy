@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
-using ShoppyApp.Model;
+using Shoppy.Models;
 
-namespace ShoppyApp.Data
+namespace Shoppy.DataAccess.Data
 {
     public class ApplicationDBContext : DbContext
     {

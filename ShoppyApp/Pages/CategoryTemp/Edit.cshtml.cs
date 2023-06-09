@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ShoppyApp.Data;
-using ShoppyApp.Model;
+using Shoppy.DataAccess.Data;
+using Shoppy.Models;
 
 namespace ShoppyApp.Pages.CategoryTemp
 {
     public class EditModel : PageModel
     {
-        private readonly ShoppyApp.Data.ApplicationDBContext _context;
+        private readonly ApplicationDBContext _context;
 
-        public EditModel(ShoppyApp.Data.ApplicationDBContext context)
+        public EditModel(ApplicationDBContext context)
         {
             _context = context;
         }

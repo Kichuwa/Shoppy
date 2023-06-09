@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ShoppyApp.Data;
-using ShoppyApp.Model;
+using Shoppy.DataAccess.Data;
+using Shoppy.Models;
 
 namespace ShoppyApp.Pages.CategoryTemp
 {
     public class DetailsModel : PageModel
     {
-        private readonly ShoppyApp.Data.ApplicationDBContext _context;
+        private readonly ApplicationDBContext _context;
 
-        public DetailsModel(ShoppyApp.Data.ApplicationDBContext context)
+        public DetailsModel(ApplicationDBContext context)
         {
             _context = context;
         }
