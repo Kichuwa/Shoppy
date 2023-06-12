@@ -9,7 +9,6 @@ namespace ShoppyApp.Pages.Admin.Foods
     {
         private readonly ApplicationDBContext _db;
         public IEnumerable<Food> Foods { get; set; }
-
         public IndexModel(ApplicationDBContext db)
         {
             _db = db;

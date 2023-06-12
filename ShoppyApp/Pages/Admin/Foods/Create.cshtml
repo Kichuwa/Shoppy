@@ -1,4 +1,29 @@
 ﻿@page
 @model ShoppyApp.Pages.Admin.Foods.CreateModel
 @{
+    ViewData["Title"] = "Create New Food Category";
+}
+
+<form method="POST">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Create Food Category</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Food.Name"></label>
+            <input asp-for="Food.Name" class="form-control" />
+            <span asp-validation-for="Food.Name" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 150px;">Create</button>
+        <a class="btn btn-secondary" style="width: 150px;" asp-page="Index">Back To List</a>
+    </div>
+</form>
+
+<!-- Set the validation as a client side procss-->
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
 }

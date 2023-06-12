@@ -1,4 +1,30 @@
 ﻿@page
 @model ShoppyApp.Pages.Admin.Foods.DeleteModel
 @{
+    ViewData["Title"] = "Delete Food Category";
+}
+
+<!--Find way to better implement ID tracking than hidden inputs-->
+
+<form method="POST">
+    <input hidden asp-for="Food.Id" />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Delete Category</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Food.Name"></label>
+            <input asp-for="Food.Name" class="form-control" disabled />
+        </div>
+        <button type="submit" class="btn btn-danger" style="width: 150px;">Delete</button>
+        <a class="btn btn-primary" style="width: 150px;" asp-page="Index">Cancel</a>
+    </div>
+</form>
+
+<!-- Set the validation as a client side procss-->
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
 }
