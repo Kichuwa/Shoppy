@@ -21,7 +21,7 @@ namespace Shoppy.DataAccess.Repository
             this.dbSet = db.Set<T>();
         }
 
-        public void add(T entity)
+        public void Add(T entity)
         {
             dbSet.Add(entity);
         }

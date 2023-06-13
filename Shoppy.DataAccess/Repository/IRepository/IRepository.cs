@@ -12,7 +12,7 @@ namespace Shoppy.DataAccess.Repository.IRepository
         // Common Methods to Consider
         // GET ALL, GET by ID First or Default, ADD, REMOVE, REMOVERANGE...etc,
 
-        void add(T entity);
+        void Add(T entity);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entity);
         IEnumerable<T> GetAll();
