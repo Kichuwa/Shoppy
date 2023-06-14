@@ -14,5 +14,6 @@ namespace Shoppy.DataAccess.Data
 
         public DbSet<Category> Category { get; set; }
         public DbSet<Food> Food { get; set; }
+        public DbSet<MenuItem> MenuItem { get; set; }
     }
 }
