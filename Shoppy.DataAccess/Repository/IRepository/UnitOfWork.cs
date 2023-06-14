@@ -14,9 +14,12 @@ namespace Shoppy.DataAccess.Repository.IRepository
         {
             _db = db;
             Category = new CategoryRepository(_db);
+            Food = new FoodsRepository(_db);
         }
 
         public ICategoryRepository Category { get;private set; }
+
+        public IFoodsRepository Food { get; private set; }
 
         public void Dispose()
         {

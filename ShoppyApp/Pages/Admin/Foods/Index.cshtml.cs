@@ -1,21 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shoppy.DataAccess.Data;
+using Shoppy.DataAccess.Repository.IRepository;
 using Shoppy.Models;
 
 namespace ShoppyApp.Pages.Admin.Foods
 {
     public class IndexModel : PageModel
     {
-        private readonly ApplicationDBContext _db;
+        private readonly IUnitOfWork _unitOfWork;
         public IEnumerable<Food> Foods { get; set; }
-        public IndexModel(ApplicationDBContext db)
+        public IndexModel(IUnitOfWork unitOfWork)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
         public void OnGet()
         {
-            Foods = _db.Food;
+            Foods = _unitOfWork.Food.GetAll();
         }
     }
 }

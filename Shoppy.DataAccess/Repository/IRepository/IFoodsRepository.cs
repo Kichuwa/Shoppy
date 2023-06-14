@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shoppy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Shoppy.DataAccess.Repository.IRepository
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IFoodsRepository : IRepository<Food> 
     {
-        IFoodsRepository Food { get; }
-        ICategoryRepository Category { get; }
-        void Save();
+        void Update(Food food);
     }
 }

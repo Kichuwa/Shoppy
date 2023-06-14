@@ -1,33 +1,37 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shoppy.DataAccess.Data;
+using Shoppy.DataAccess.Repository.IRepository;
 using Shoppy.Models;
 
+
 namespace ShoppyApp.Pages.Admin.Foods
+
 {
+    [BindProperties]
     public class DeleteModel : PageModel
     {
-        private readonly ApplicationDBContext _db;
-        [BindProperty]
+        private readonly IUnitOfWork _unitOfWork;
+
         public Food Food { get; set; }
 
-        public DeleteModel(ApplicationDBContext db)
+        public DeleteModel(IUnitOfWork unitOfWork)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
         //Find primary key in DB and return item.
         public void OnGet(int id)
         {
-            Food = _db.Food.Find(id);
+            Food = _unitOfWork.Food.GetFirstOrDefault(u => u.Id == id);
         }
 
         public async Task<IActionResult> OnPost()
         {
-                var foodFromDb = _db.Category.Find(Food.Id);
+                var foodFromDb = _unitOfWork.Food.GetFirstOrDefault(u => u.Id == Food.Id);
                 if(foodFromDb != null)
                 {
-                    _db.Category.Remove(foodFromDb);
-                    await _db.SaveChangesAsync();
+                    _unitOfWork.Food.Remove(foodFromDb);
+                    _unitOfWork.Save();
                     TempData["success"] = "Food Category deleted successfully!";
                     return RedirectToPage("Index");
                 }

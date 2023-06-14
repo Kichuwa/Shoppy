@@ -10,7 +10,6 @@ namespace ShoppyApp.Pages.Admin.Categories
     {
         private readonly IUnitOfWork _unitOfWork;
         public IEnumerable<Category> Categories { get; set; }
-
         public IndexModel(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
