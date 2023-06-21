@@ -19,7 +19,6 @@ namespace Shoppy.DataAccess.Repository.IRepository
         }
 
         public ICategoryRepository Category { get;private set; }
-
         public IFoodsRepository Food { get; private set; }
         public IMenuItemRepository MenuItem { get; private set; }
 
