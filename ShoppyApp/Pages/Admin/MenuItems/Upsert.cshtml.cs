@@ -11,14 +11,16 @@ namespace ShoppyApp.Pages.Admin.MenuItems
     public class UpsertModel : PageModel
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _hostEnvironment;
         
         public MenuItem MenuItem { get; set; }
         public IEnumerable<SelectListItem> CategoryList { get; set; }
         public IEnumerable<SelectListItem> FoodList { get; set; }
 
-        public UpsertModel(IUnitOfWork unitOfWork)
+        public UpsertModel(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _hostEnvironment = hostEnvironment;
             MenuItem = new();
         }
         public void OnGet()
@@ -38,16 +40,29 @@ namespace ShoppyApp.Pages.Admin.MenuItems
 
         public async Task<IActionResult> OnPost()
         {
-            if (ModelState.IsValid)
+            string webRootPath = _hostEnvironment.WebRootPath;
+            var files = HttpContext.Request.Form.Files;
+            if (MenuItem.Id == 0)
             {
+                //create
+                string fileName_new = Guid.NewGuid().ToString();
+                var uploads = Path.Combine(webRootPath, @"images\menuItems");
+                var extension = Path.GetExtension(files[0].FileName);
+
+                using (var filestream = new FileStream(Path.Combine(uploads, fileName_new + extension), FileMode.Create))
+                {
+                    files[0].CopyTo(filestream);
+                }
+                MenuItem.Image = @"\images\menuItems\" + fileName_new + extension;
                 _unitOfWork.MenuItem.Add(MenuItem);
                 _unitOfWork.Save();
-                TempData["success"] = "Food Category created successfully!";
-                return RedirectToPage("Index");
             }
-            //Keep user on Page if invalid state
-            TempData["error"] = "Error creating data";
-            return Page();
+            else
+            {
+
+            }
+
+            return RedirectToPage("./Index");
         }
     }
 }
