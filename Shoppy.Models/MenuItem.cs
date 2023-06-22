@@ -18,9 +18,11 @@ namespace Shoppy.Models
         public string Image { get; set; }
         [Range(1, 1000, ErrorMessage ="Price Should be between $1 and $1000")]
         public double Price { get; set; }
+        [Display(Name = "Food Type")]
         public int FoodId { get; set; }
         [ForeignKey("FoodId")]
         public Food Food { get; set; }
+        [Display(Name = "Category")]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
     }
