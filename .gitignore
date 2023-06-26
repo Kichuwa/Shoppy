@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ShoppyApp/wwwroot/images/menuItems/2c24495e-82b9-47b7-84fd-b6043e2fa3e1.webp
+/ShoppyApp/wwwroot/images/menuItems/3d85e647-d01f-4d2f-94a7-ed13c591fe88.jpeg
+/ShoppyApp/wwwroot/images/menuItems/d0a40593-517e-4f6c-8f73-6795c5823607.jpeg
