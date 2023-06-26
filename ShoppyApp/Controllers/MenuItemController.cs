@@ -26,7 +26,7 @@ namespace ShoppyApp.Controllers
         public IActionResult Delete(int id)
         {
             var objFromDb = _unitOfWork.MenuItem.GetFirstOrDefault(u => u.Id == id);
-            var oldImagePath = Path.Combine(_hostEnvironment.WebRootPath, objFromDb.Image.Trim('\\'));
+            var oldImagePath = Path.Combine(_hostEnvironment.WebRootPath, objFromDb.Image.TrimStart('\\'));
             if (System.IO.File.Exists(oldImagePath))
             {
                 System.IO.File.Delete(oldImagePath);

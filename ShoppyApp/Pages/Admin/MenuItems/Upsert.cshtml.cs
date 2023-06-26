@@ -73,7 +73,7 @@ namespace ShoppyApp.Pages.Admin.MenuItems
                     var extension = Path.GetExtension(files[0].FileName);
 
                     //delete old image
-                    var oldImagePath = Path.Combine(webRootPath, objFromDb.Image.Trim('\\'));
+                    var oldImagePath = Path.Combine(webRootPath, objFromDb.Image.TrimStart('\\'));
                     if(System.IO.File.Exists(oldImagePath))
                     {
                         System.IO.File.Delete(oldImagePath);
