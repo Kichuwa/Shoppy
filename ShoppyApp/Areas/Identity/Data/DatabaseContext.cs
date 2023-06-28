@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Shoppy.DataAccess.Data;
 
-public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+public class DatabaseContext : IdentityDbContext<IdentityUser>
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDBContext> options)
+    public DatabaseContext(DbContextOptions<ApplicationDBContext> options)
         : base(options)
     {
     }
