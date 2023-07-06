@@ -18,14 +18,18 @@ namespace Shoppy.DataAccess.Repository.IRepository
             Food = new FoodsRepository(_db);
             MenuItem = new MenuItemRepository(_db);
             ShoppingCart = new ShoppingCartRepository(_db);
+            OrderHeader = new OrderHeaderRepository(_db);
+            OrderDetails = new OrderDetailsRepository(_db);
         }
 
         public ICategoryRepository Category { get;private set; }
         public IFoodsRepository Food { get; private set; }
         public IMenuItemRepository MenuItem { get; private set; }
         public IShoppingCartRepository ShoppingCart { get; private set; }
+		public IOrderDetailsRepository OrderDetails { get; private set; }
+		public IOrderHeaderRepository OrderHeader { get; private set; }
 
-        public void Dispose()
+		public void Dispose()
         {
              _db.Dispose();
         } 

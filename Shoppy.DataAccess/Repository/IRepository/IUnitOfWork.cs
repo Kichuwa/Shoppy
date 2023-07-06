@@ -12,6 +12,8 @@ namespace Shoppy.DataAccess.Repository.IRepository
         ICategoryRepository Category { get; }
         IMenuItemRepository MenuItem { get; }
         IShoppingCartRepository ShoppingCart { get; }
+        IOrderDetailsRepository OrderDetails { get; }
+        IOrderHeaderRepository OrderHeader { get; }
         void Save();
     }
 }
