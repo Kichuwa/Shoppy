@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Shoppy.DataAccess.Repository.IRepository;
 using Shoppy.Models;
 using Shoppy.Utility;
+using Stripe.Checkout;
 using System.Security.Claims;
 
 namespace ShoppyApp.Pages.Customer.Cart
@@ -61,7 +62,7 @@ namespace ShoppyApp.Pages.Customer.Cart
 				_unitOfWork.OrderHeader.Add(OrderHeader);
 				_unitOfWork.Save();
 
-				foreach(var item in ShoppingCartList)
+				foreach (var item in ShoppingCartList)
 				{
 					OrderDetails orderDetails = new()
 					{
@@ -73,13 +74,48 @@ namespace ShoppyApp.Pages.Customer.Cart
 					};
 					_unitOfWork.OrderDetails.Add(orderDetails);
 				}
-
+				int quantity = ShoppingCartList.ToList().Count;
 				_unitOfWork.ShoppingCart.RemoveRange(ShoppingCartList);
 				_unitOfWork.Save();
-				
-			}
-			TempData["success"] = "Order submitted successfully!";
-			return RedirectToPage("/Customer/Cart/Index");
+
+				var domain = "https://localhost:4242";
+				var options = new SessionCreateOptions
+				{
+					LineItems = new List<SessionLineItemOptions>(),
+
+					Mode = "payment",
+					SuccessUrl = domain + $"/Customer/Cart/OrderConfirmation?id={OrderHeader.Id}.html",
+					CancelUrl = domain + "/Customer/Cart/Index.html",
+				};
+
+				//Add line items
+				foreach (var item in ShoppingCartList) { 
+					var sessionLineItem = new SessionLineItemOptions
+					{
+						PriceData = new SessionLineItemPriceDataOptions
+						{
+							UnitAmount = (long)(item.MenuItem.Price * 100),
+							Currency = "usd",
+							ProductData = new SessionLineItemPriceDataProductDataOptions
+							{
+								Name = item.MenuItem.Name,
+							},
+						},
+						Quantity = item.Count
+					};
+					options.LineItems.Add(sessionLineItem);
+				}
+
+                var service = new SessionService();
+                Session session = service.Create(options);
+                Response.Headers.Add("Location", session.Url);
+
+				OrderHeader.SessionId = session.Id;
+				OrderHeader.PaymentIntentId = session.PaymentIntentId;
+                return new StatusCodeResult(303);
+
+            }
+			return Page();
 		}
 	}
 }

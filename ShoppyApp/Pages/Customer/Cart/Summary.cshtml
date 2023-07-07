@@ -1,5 +1,7 @@
 ﻿@page
+@using Microsoft.Extensions.Options;
 @model ShoppyApp.Pages.Customer.Cart.SummaryModel
+@inject IOptions<Shoppy.Utility.StripeSettings> Stripe
 @{
 }
 
@@ -110,6 +112,7 @@
 
 @section Scripts{
 	@{
+		<script src="https://js.stripe.com/v3/"></script>
 		<partial name="_ValidationScriptsPartial" />
 	}
 }
