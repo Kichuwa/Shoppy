@@ -40,7 +40,7 @@ namespace ShoppyApp.Pages.Customer.Cart
 			}
 		}
 
-		public void OnPost()
+		public IActionResult OnPost()
 		{
 			var claimsIdentity = (ClaimsIdentity)User.Identity;
 			var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
@@ -76,7 +76,10 @@ namespace ShoppyApp.Pages.Customer.Cart
 
 				_unitOfWork.ShoppingCart.RemoveRange(ShoppingCartList);
 				_unitOfWork.Save();
+				
 			}
+			TempData["success"] = "Order submitted successfully!";
+			return RedirectToPage("/Customer/Cart/Index");
 		}
 	}
 }
