@@ -74,18 +74,22 @@ namespace ShoppyApp.Pages.Customer.Cart
 					};
 					_unitOfWork.OrderDetails.Add(orderDetails);
 				}
-				int quantity = ShoppingCartList.ToList().Count;
-				_unitOfWork.ShoppingCart.RemoveRange(ShoppingCartList);
+				
+				//_unitOfWork.ShoppingCart.RemoveRange(ShoppingCartList);
 				_unitOfWork.Save();
 
-				var domain = "https://localhost:4242";
+				var domain = "https://localhost:7283";
 				var options = new SessionCreateOptions
 				{
-					LineItems = new List<SessionLineItemOptions>(),
-
+					LineItems = new List<SessionLineItemOptions>()
+				,
+					PaymentMethodTypes = new List<string>
+				{
+						"card",
+				},
 					Mode = "payment",
-					SuccessUrl = domain + $"/Customer/Cart/OrderConfirmation?id={OrderHeader.Id}.html",
-					CancelUrl = domain + "/Customer/Cart/Index.html",
+					SuccessUrl = domain + $"/Customer/Cart/OrderConfirmation?id={OrderHeader.Id}",
+					CancelUrl = domain + "/Customer/Cart/Index",
 				};
 
 				//Add line items
@@ -112,6 +116,7 @@ namespace ShoppyApp.Pages.Customer.Cart
 
 				OrderHeader.SessionId = session.Id;
 				OrderHeader.PaymentIntentId = session.PaymentIntentId;
+				_unitOfWork.Save();
                 return new StatusCodeResult(303);
 
             }
