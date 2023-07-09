@@ -18,6 +18,8 @@ namespace Shoppy.Models
 		public string UserId { get; set; }
 		[ForeignKey("UserId")]
 		[ValidateNever]
+		public ApplicationUser ApplicationUser { get; set; }
+
 		[Required]
 		public DateTime OrderDate { get; set; }
 		[Required]
