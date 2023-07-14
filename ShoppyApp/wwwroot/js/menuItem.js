@@ -8,8 +8,15 @@ $(document).ready(function () {
             "datatype":"json"
         },
         "columns": [
-            { "data": "name", "width": "25%" }, 
-            { "data": "price", "width": "15%" },
+            { "data": "name", "width": "25%" },
+            {
+                "data": "price",
+                "render": function (data) {
+                    var formattedValue = parseFloat(data).toFixed(2);
+                    return '$' + formattedValue;
+                },
+                "width": "15%"
+            },
             { "data": "category.name", "width": "15%" },
             { "data": "food.name", "width": "15%" },
             {

@@ -11,7 +11,13 @@ $(document).ready(function () {
             { "data": "id", "width": "15%" }, 
             { "data": "pickupName", "width": "15%" },
             { "data": "applicationUser.email", "width": "15%" },
-            { "data": "orderTotal", "width": "15%" },
+            {
+                "data": "orderTotal", "render": function (data) {
+                    var formattedValue = parseFloat(data).toFixed(2);
+                    return '$' + formattedValue;
+                },
+                "width": "15%"
+            },
             { "data": "pickUpTime", "width": "25%" },
             {
                 "data": "id",
